@@ -4,6 +4,7 @@
 #include <QtOpenGL>
 
 #include "myglwidget.h"
+#include "graphics.h"
 
 MyGLWidget::MyGLWidget(QWidget *parent)
     : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
@@ -98,9 +99,11 @@ void MyGLWidget::resizeGL(int width, int height)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 #ifdef QT_OPENGL_ES_1
-    glOrthof(-2, +2, -2, +2, 1.0, 15.0);
+    //glOrthof(-2, +2, -2, +2, 1.0, 15.0);
+    glOrthof(-1000, 1000, -2, +2, 1.0, 15.0);
 #else
-    glOrtho(-2, +2, -2, +2, 1.0, 15.0);
+    //glOrtho(-2, +2, -2, +2, 1.0, 15.0);
+    glOrtho(-1000, 1000, -2, +2, 1.0, 15.0);
 #endif
     glMatrixMode(GL_MODELVIEW);
 }
@@ -129,7 +132,7 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
 void MyGLWidget::draw()
 {
     qglColor(Qt::red);
-    glBegin(GL_QUADS);
+    /*glBegin(GL_QUADS);
         glNormal3f(0,0,-1);
         glVertex3f(-1,-1,0);
         glVertex3f(-1,1,0);
@@ -161,4 +164,8 @@ void MyGLWidget::draw()
         glVertex3f(-1,-1,0);
         glVertex3f(0,0,1.2);
     glEnd();
+    */
+    Graphics::DDA(2, 0, 1000,1000);
+
+
 }

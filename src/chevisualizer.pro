@@ -16,9 +16,11 @@ SOURCES += main.cpp\
         window.cpp \
         myglwidget.cpp \
         atom.cpp \
-        chemical.cpp
+        chemical.cpp \
+        graphics.cpp
 
-        HEADERS  += atom.h \
+        HEADERS  += graphics.h \
+        atom.h \
     chemical.h \
     window.h \
     myglwidget.h
